@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from 'react';
+import Field from './components/Field';
+import Languages from './components/Languages';
+import Translate from './components/Translate';
+const App = () => {
+  const [text, setText] = useState('welcome');
+  const [languages, setLanguages] = useState('fr');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Field label="Enter English" value={text} onChange={setText} />
+      <Languages language={languages} onLanguageChange={setLanguages} />
+      <Translate text={text} language={languages} />
     </div>
   );
-}
+};
 
 export default App;
